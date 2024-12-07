@@ -26,7 +26,8 @@ export const handleGetAllNotes = async (req, res) => {
 export const handleAddNotes = async (req, res) => {
   const { title, note } = req.body;
   try {
-    const params = [title, note];
+    const datetime = new Date();
+    const params = [title, datetime, note];
     await addNote(params);
     return res.status(200).json({
       status: true,
@@ -80,7 +81,8 @@ export const handleUpdateNote = async (req, res) => {
   const id = req.params.id;
   const { title, note } = req.body;
   try {
-    const params = [title, note];
+    const datetime = new Date();
+    const params = [title, datetime, note];
     await updateNote(id, params);
     return res.status(200).json({
       status: true,

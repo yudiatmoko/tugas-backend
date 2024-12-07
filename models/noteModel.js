@@ -9,11 +9,11 @@ const getNoteById = async (id) => {
 };
 
 const addNote = async (params) => {
-  return query("INSERT INTO notes (title, note) VALUES (?, ?)", params);
+  return query("INSERT INTO notes (title, datetime, note) VALUES (?, ?, ?)", params);
 };
 
 const updateNote = async (id, params) => {
-  return query("UPDATE notes SET title = ?, note = ? WHERE id = ?", [
+  return query("UPDATE notes SET title = ?, datetime = ?, note = ? WHERE id = ?", [
       ...params,
       id,
   ]);
